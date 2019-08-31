@@ -25,14 +25,16 @@ class Formula():
 				showinfo('%s' % self.name, 'Formula has been added')
 
 
-	def remove_formula(self): #mode:a = autonomous
+	def remove_formula(self, silence=None): #mode:a = autonomous
 		print(self.name)
 		with shelve.open(pos_settings.formulas) as db:
 			if not self.name in db:
-				showerror('Error', 'This item does not have formula')
+				if silence:
+					showerror('Error', 'This item does not have formula')
 			else:
 				db.pop(self.name)
-				showinfo('%s' % self.name, 'Formula has been removed')
+				if silence:
+					showinfo('%s' % self.name, 'Formula has been removed')
 
 	def get_formula(self, parent=None, silence=None): #silence dont trigger dialogs
 		formula = []
