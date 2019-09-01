@@ -29,11 +29,11 @@ class Formula():
 		print(self.name)
 		with shelve.open(pos_settings.formulas) as db:
 			if not self.name in db:
-				if silence:
+				if not silence:
 					showerror('Error', 'This item does not have formula')
 			else:
 				db.pop(self.name)
-				if silence:
+				if not silence:
 					showinfo('%s' % self.name, 'Formula has been removed')
 
 	def get_formula(self, parent=None, silence=None): #silence dont trigger dialogs
