@@ -199,7 +199,7 @@ class ItemMenu(Toplevel):
 				itemlabel = self.listbox.get(index)
 				answer = askokcancel('Verify remove', 'Are you sure you want to remove ' + itemlabel + ' formula?')
 				if answer == True:
-					Formula(name=itemlabel).remove_formula(silence=True)
+					Formula(name=itemlabel).remove_formula()
 				else:
 					pass
 			else:
@@ -207,11 +207,11 @@ class ItemMenu(Toplevel):
 					itemlabel = self.listbox.get(position)
 					answer = askokcancel('Verify remove', 'Are you sure you want to remove ' + itemlabel + ' formula?')
 					if answer == True:
-						Formula(name=itemlabel).remove_formula(silence=True)
+						Formula(name=itemlabel).remove_formula()
 					else:
 						pass
 		else:
-			Formula(name=name).remove_formula()
+			Formula(name=name).remove_formula(silence=True)
 
 	def modify_formula(self):
 		index = self.listbox.curselection()
